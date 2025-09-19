@@ -192,6 +192,42 @@ export type Database = {
           },
         ]
       }
+      queries: {
+        Row: {
+          created_at: string | null
+          exam_id: number | null
+          id: number
+          query_text: string
+          response_text: string | null
+          status: string | null
+          student_id: number
+          teacher_id: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          exam_id?: number | null
+          id?: number
+          query_text: string
+          response_text?: string | null
+          status?: string | null
+          student_id: number
+          teacher_id?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          exam_id?: number | null
+          id?: number
+          query_text?: string
+          response_text?: string | null
+          status?: string | null
+          student_id?: number
+          teacher_id?: number | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       schools: {
         Row: {
           address: string | null
@@ -274,6 +310,7 @@ export type Database = {
       }
       users: {
         Row: {
+          auth_user_id: string | null
           created_at: string | null
           email: string
           id: number
@@ -283,6 +320,7 @@ export type Database = {
           username: string
         }
         Insert: {
+          auth_user_id?: string | null
           created_at?: string | null
           email: string
           id?: number
@@ -292,6 +330,7 @@ export type Database = {
           username: string
         }
         Update: {
+          auth_user_id?: string | null
           created_at?: string | null
           email?: string
           id?: number
@@ -315,7 +354,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_current_user_id: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
+      get_current_user_role: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
+      get_current_user_school: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
